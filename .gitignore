@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Environment
+.env
+.env.*
+.env_local
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+ENV.bak/
+env.bak/
+
+# Flask
+instance/
+*.db
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Pytest
+.cache/
+.tox/
+
+# mypy
+.mypy_cache/
+
+# Test reporting
+coverage.*
+htmlcov/
+*.cover
+
+# Logs
+*.log
