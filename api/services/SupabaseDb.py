@@ -73,6 +73,28 @@ class SupabaseService:
         res = self.client.table("wp_credentials").select("*").eq("user_id", user_id).execute()
         return res.data
 
+    def update_wp_credential_by_user(self, user_id: str, wp_url: str = None, wp_token: str = None):
+        """Update credential WP berdasarkan user id"""
+        update_fields = {}
+        if wp_url is not None:
+            update_fields["wp_url"] = wp_url
+        if wp_token is not None:
+            update_fields["wp_token"] = wp_token
+        if not update_fields:
+            return None  # Nothing to update
+
+        # Optionally, update 'updated_at' field if your schema has it
+        # from datetime import datetime
+        # update_fields["updated_at"] = datetime.utcnow().isoformat()
+
+        try:
+            res = self.client.table("wp_credentials").update(update_fields).eq("user_id", user_id).execute()
+            return res
+        except Exception as e:
+            print(f"Update failed: {e}")
+            return None
+
+
     # -------------------------
     # ARTICLES TABLE
     # -------------------------

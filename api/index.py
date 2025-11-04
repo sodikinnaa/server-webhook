@@ -10,7 +10,7 @@ load_dotenv(dotenv_path=env_path)
 # wzs_api = wzs_api()
 # output = wzs_api.send_message("6288275426716", "Hello, this is a test message")
 # print(json.dumps(output, indent=4))
-
+PORT_SERVER=os.getenv('PORT_SERVER')
 app = Flask(__name__)
 
 @app.route("/")
@@ -44,4 +44,4 @@ def webhook():
     return jsonify({"message": "Webhook received"}), 200
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5002, host="0.0.0.0", use_reloader=True)
+    app.run(debug=True, port=PORT_SERVER, host="0.0.0.0", use_reloader=True)
