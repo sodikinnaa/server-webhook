@@ -5,8 +5,8 @@ __pycache__/
 *.pyd
 *.pyc
 
-docker-compose.yaml
-Dockerfile
+# docker-compose.yaml
+# Dockerfile
 # Distribution / Packaging
 build/
 dist/

@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  flaskapp:
+    build: .
+    container_name: flask_app
+    env_file:
+      - .env
+    ports:
+      - "${PORT_SERVER}:5003"
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - WUZAPI_BASE_URL=${WUZAPI_BASE_URL}
+      - WUZAPI_TOKEN=${WUZAPI_TOKEN}
+      - TOKEN_GEMINI=${TOKEN_GEMINI}
+      - TOKEN_ARTIKEL=${TOKEN_ARTIKEL}
+    volumes:
+      - .:/app
+    restart: always
