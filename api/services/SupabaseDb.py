@@ -63,6 +63,7 @@ class SupabaseService:
             "user_id": data['user_id'],
             "wp_url": data['wp_url'],
             "wp_token": data['wp_token'],
+            "gemini_token":data['gemini_token'],
             "created_at": created_at_iso
         }
         res = self.client.table("wp_credentials").insert(insert_data).execute()
@@ -73,13 +74,16 @@ class SupabaseService:
         res = self.client.table("wp_credentials").select("*").eq("user_id", user_id).execute()
         return res.data
 
-    def update_wp_credential_by_user(self, user_id: str, wp_url: str = None, wp_token: str = None):
+    def update_wp_credential_by_user(self, user_id: str, wp_url: str = None, wp_token: str = None, gemini_token: str = None):
         """Update credential WP berdasarkan user id"""
         update_fields = {}
         if wp_url is not None:
             update_fields["wp_url"] = wp_url
         if wp_token is not None:
             update_fields["wp_token"] = wp_token
+        if wp_token is not None:
+            update_fields["gemini_token"] = gemini_token
+        
         if not update_fields:
             return None  # Nothing to update
 

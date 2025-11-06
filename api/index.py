@@ -27,6 +27,7 @@ def webhook():
     event = data.get("event") if data else None
     sender = event.get("Info", {}).get("Sender") if event else None
     conversation = event.get("Message", {}).get("conversation") if event else None
+    print(event)
     isForMe = event.get("Info", {}).get("IsFromMe") if event else None
     if conversation:
         chat = conversation
@@ -35,7 +36,7 @@ def webhook():
         if sender and isinstance(sender, str):
             phone = sender.split(':')[0] if ':' in sender else sender
             message = wzs_api.message_to_reply(string_chat, chat, phone)
-            wzs_api.send_message("6288275426716",message)
+            wzs_api.send_message(phone,message)
 
     if chat:
         print("kore wa data : " + chat + " from : " + phone )
